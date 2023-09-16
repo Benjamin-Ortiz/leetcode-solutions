@@ -18,32 +18,41 @@ plan:
 
  */
 
-const createCharBankObj = (mag) => {
-         let bank = {};
+// const createCharBankObj = (mag) => {
+//          let bank = {};
 
-        for (let letter in mag) {
-            let char = mag[letter]
+//         for (let letter in mag) {
+//             let char = mag[letter]
 
-            if(!bank[char]) {
-                bank[char] = 1
-            }
-            else bank[char]++
-        }
-        return bank;
-}
+//             if(!bank[char]) {
+//                 bank[char] = 1
+//             }
+//             else bank[char]++
+//         }
+//         return bank;
+// }
 
-var canConstruct = function(ransomNote, magazine) {
-    let bank = createCharBankObj(magazine);
+// var canConstruct = function(ransomNote, magazine) {
+//     let bank = createCharBankObj(magazine);
 
-    for(let letter in ransomNote) {
-        let char = ransomNote[letter]
-        if (!bank[char] || bank[char] ===0){
-            return false
-        }
-        else {
-            bank[char]--
-        }
-    }
+//     for(let letter in ransomNote) {
+//         let char = ransomNote[letter]
+//         if (!bank[char] || bank[char] ===0){
+//             return false
+//         }
+//         else {
+//             bank[char]--
+//         }
+//     }
 
-    return true
+//     return true
+// };
+
+var canConstruct = function (ransomNote, magazine) {
+  for (const char of magazine) {
+    ransomNote = ransomNote.replace(char, "");
+  }
+  
+  if (!ransomNote) return true;
+  else return false;
 };
